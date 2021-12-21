@@ -8,10 +8,6 @@ CurrentDate = "%d/%m/%Y"
 CurrentDateStr = "%a, %b %d"
 CurrentTime = "%H:%M"
 CurrentTimeSec = "%H:%M:%S"
-print(now.strftime(CurrentDate))
-print(now.strftime(CurrentDateStr))
-print(now.strftime(CurrentTime))
-print(now.strftime(CurrentTimeSec))
 #____________________________________________________________________________MENU
 aukera = -1
 while aukera != 0:
