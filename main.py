@@ -5,6 +5,7 @@ from functions import *
 
 now = datetime.datetime.now()
 CurrentDate = "%d/%m/%Y"
+CurrentDateIso = "%Y-%m-%d"
 CurrentDateStr = "%a, %b %d"
 CurrentTime = "%H:%M"
 CurrentTimeSec = "%H:%M:%S"
