@@ -1,12 +1,12 @@
 import datetime
 from functions import *
-from colorama import init, Fore, Back, Style
 
 #  ___________________________________________________________________________SAVE AND LOAD DATA
 if not(os.path.isfile("data.txt")):   # if data.txt does not exist
     create()   # creates save file with default data
     save()
 restore_theme()
+
 #  ____________________________________________________________________________DATE AND TIME VARIABLES
 now = datetime.datetime.now()  # gets the current date
 CurrentDate = "%d/%m/%Y"  # formats the current date as 31/12/2000
@@ -17,7 +17,12 @@ CurrentTimeSec = "%H:%M:%S"  # formats the current time as 13:30:00
 #  ____________________________________________________________________________MENU
 menuOption = -1
 while menuOption != 0:
-    print(f"Hello, {d.name}! It is now {now.strftime(CurrentTime)} of {now.strftime(CurrentDateStr)}.")
+    if d.clean:   # will clear the terminal if the user asked to do so
+        clear()
+    if d.seconds:
+        print(f"Hello, {d.name}! It is now {now.strftime(CurrentTimeSec)} of {now.strftime(CurrentDateStr)}.")
+    else:
+        print(f"Hello, {d.name}! It is now {now.strftime(CurrentTime)} of {now.strftime(CurrentDateStr)}.")
     print("------------------------MENU------------------------")
     print("1) Stopwatch")  # count the time something takes
     print("2) Alarm")  # alarm clock that will ring at a determined hour
@@ -44,5 +49,6 @@ while menuOption != 0:
         save()
     elif menuOption == 0:
         print("Goodbye!")
+        input("Press enter to close...")
     else:
         print("invalid number")
