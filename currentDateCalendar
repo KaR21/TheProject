@@ -1,0 +1,4 @@
+import calendar
+import datetime
+currentDateTime = datetime.datetime.now()
+print(calendar.month(currentDateTime.year, currentDateTime.month))
