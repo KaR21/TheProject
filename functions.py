@@ -1,6 +1,7 @@
 import os
 import linecache
 import time
+import calendar
 
 from colorama import Fore, Back, Style
 from pygame import mixer
@@ -71,9 +72,15 @@ def stopwatch():
             stopwatch_option = int(input("Choose an option: "))
             if stopwatch_option == 1:
                 end = int(time.time())
-                elapsed = "a"
+                elapsed = int(end) - int(d.stopwatch)
+                if elapsed > 60:
+                    elapsedmin = int(elapsed / 60)
+                    elapsed = elapsed - 60 * elapsedmin
+                    print(f"Your elapsed time is {elapsedmin} minutes and {elapsed} seconds")
+                else:
+                    print(f"Your elapsed time is {elapsed} seconds")
                 d.stopwatch = None
-                print(f"Your elapsed time is {elapsed}")
+                input("Press enter to continue...")
                 save()
 
 
@@ -99,8 +106,63 @@ def pomodoro():
         pomodoro_option = int(input("Choose an option: "))
         print(pomodoro_option)
         if pomodoro_option == 1:
+            pomodoro_time = -1   # the index of the options
+            pomodoro_work = 0   # amount of work minutes
+            pomodoro_rest = 0  # amount of rest minutes
+            pomodoro_current = "unknown"   # current pomodoro status
             clear()
-            print("wow it works")
+            while pomodoro_time != 0:
+                print("----------------------POMODORO----------------------")
+                print("Please choose an option:")
+                print("1) 50/10")
+                print("2) 25/5")
+                print("3) 45/15")
+                print("0) EXIT")
+                print()
+                print("If you don't know how this mode works, return to the HELP menu.")
+                print("----------------------------------------------------")
+                pomodoro_time = int(input("Choose an option: "))
+                if pomodoro_time == 1:
+                    pomodoro_work = 50
+                    pomodoro_rest = 10
+                    pomodoro_current = "work"
+                elif pomodoro_time == 2:
+                    pomodoro_work = 25
+                    pomodoro_rest = 5
+                    pomodoro_current = "work"
+                elif pomodoro_time == 3:
+                    pomodoro_work = 45
+                    pomodoro_rest = 15
+                    pomodoro_current = "work"
+                elif pomodoro_time == 0:
+                    break
+                else:
+                    print("invalid number")
+                if pomodoro_current == "work":
+                    clear()
+                    pomodoro_time = 0   # discards menu choice to avoid a bug
+                    pomodoro_work_restore = pomodoro_work
+                    pomodoro_rest_restore = pomodoro_rest
+                    mixer.music.load("./aud/work.mp3")
+                    mixer.music.play()
+                    while pomodoro_work > 0:
+                        print("Time to work!")
+                        print(f"{pomodoro_work} minutes left")
+                        time.sleep(300)
+                        pomodoro_work = pomodoro_work - 5
+                        clear()
+                    pomodoro_work = pomodoro_work_restore
+                    mixer.music.load("./aud/rest.mp3")
+                    while pomodoro_rest > 0:
+                        print("Time to rest!")
+                        print(f"{pomodoro_rest} minutes left")
+                        time.sleep(300)
+                        pomodoro_rest = pomodoro_rest - 5
+                        clear()
+                    pomodoro_rest = pomodoro_rest_restore
+                else:
+                    print("An exception has occurred.")
+
         elif pomodoro_option == 9:
             clear()
             print("-------------------POMODORO HELP--------------------")
