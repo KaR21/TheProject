@@ -109,7 +109,7 @@ def pomodoro():
             pomodoro_time = -1   # the index of the options
             pomodoro_work = 0   # amount of work minutes
             pomodoro_rest = 0  # amount of rest minutes
-            pomodoro_current = "unknown"   # current pomodoro status
+            pomodoro_current = "stop"   # current pomodoro status (start/stop)
             clear()
             while pomodoro_time != 0:
                 print("----------------------POMODORO----------------------")
@@ -125,41 +125,61 @@ def pomodoro():
                 if pomodoro_time == 1:
                     pomodoro_work = 50
                     pomodoro_rest = 10
-                    pomodoro_current = "work"
+                    pomodoro_current = "start"
                 elif pomodoro_time == 2:
                     pomodoro_work = 25
                     pomodoro_rest = 5
-                    pomodoro_current = "work"
+                    pomodoro_current = "start"
                 elif pomodoro_time == 3:
                     pomodoro_work = 45
                     pomodoro_rest = 15
-                    pomodoro_current = "work"
+                    pomodoro_current = "start"
                 elif pomodoro_time == 0:
                     break
                 else:
                     print("invalid number")
-                if pomodoro_current == "work":
+                if pomodoro_current == "start":
                     clear()
                     pomodoro_time = 0   # discards menu choice to avoid a bug
                     pomodoro_work_restore = pomodoro_work
                     pomodoro_rest_restore = pomodoro_rest
-                    mixer.music.load("./aud/work.mp3")
-                    mixer.music.play()
-                    while pomodoro_work > 0:
-                        print("Time to work!")
-                        print(f"{pomodoro_work} minutes left")
-                        time.sleep(300)
-                        pomodoro_work = pomodoro_work - 5
-                        clear()
-                    pomodoro_work = pomodoro_work_restore
-                    mixer.music.load("./aud/rest.mp3")
-                    while pomodoro_rest > 0:
-                        print("Time to rest!")
-                        print(f"{pomodoro_rest} minutes left")
-                        time.sleep(300)
-                        pomodoro_rest = pomodoro_rest - 5
-                        clear()
-                    pomodoro_rest = pomodoro_rest_restore
+                    while pomodoro_current == "start":
+                        mixer.music.load("./aud/work.mp3")
+                        mixer.music.play()
+                        while pomodoro_work > 0:
+                            print("-------------------------------POMODORO-------------------------------".center(70))
+                            print()
+                            print("The only way to exit Pomodoro mode is by closing the program.".center(70))
+                            print()
+                            print("----------------------------------------------------------------------".center(70))
+                            print("Time to work!".center(70))
+                            if pomodoro_work != 1:
+                                print(f"{pomodoro_work} minutes left".center(70))
+                            else:
+                                print("Less than a minute left".center(70))
+                            print("----------------------------------------------------------------------".center(70))
+                            time.sleep(60)
+                            pomodoro_work = pomodoro_work - 1
+                            clear()
+                        pomodoro_work = pomodoro_work_restore
+                        mixer.music.load("./aud/rest.mp3")
+                        mixer.music.play()
+                        while pomodoro_rest > 0:
+                            print("----------------------POMODORO----------------------".center(70))
+                            print()
+                            print("The only way to exit Pomodoro mode is by closing the program.".center(70))
+                            print()
+                            print("----------------------------------------------------")
+                            print("Time to rest!".center(70))
+                            if pomodoro_rest != 1:
+                                print(f"{pomodoro_rest} minutes left".center(70))
+                            else:
+                                print("Less than a minute left".center(70))
+                            print("----------------------------------------------------")
+                            time.sleep(60)
+                            pomodoro_rest = pomodoro_rest - 1
+                            clear()
+                        pomodoro_rest = pomodoro_rest_restore
                 else:
                     print("An exception has occurred.")
 
@@ -171,7 +191,7 @@ def pomodoro():
             print("By reading this short guide, you'll learn how to use")
             print("this mode in its intended way.")
             print("----------------------------------------------------")
-            print("(1/5)".center(51))
+            print("(1/5)".center(70))
             print()
             input("Press enter to continue...")
             clear()
@@ -181,7 +201,7 @@ def pomodoro():
             print("only the to-do list and the timer of the pomodoro.")
             print("The timer will have different time options.")
             print("----------------------------------------------------")
-            print("(2/5)".center(51))
+            print("(2/5)".center(70))
             print()
             input("Press enter to continue...")
             clear()
@@ -191,7 +211,7 @@ def pomodoro():
             print("to take a break. For example, 25/5 means 25 for work,")
             print("5 to rest. In the next slide you will hear a sound.")
             print("----------------------------------------------------")
-            print("(3/5)".center(51))
+            print("(3/5)".center(70))
             print()
             input("Press enter to continue...")
             mixer.music.load("./aud/work.mp3")
@@ -203,7 +223,7 @@ def pomodoro():
             print("this sound. After finishing work mode and entering rest")
             print("mode, you will hear another one, it's in the next page.")
             print("----------------------------------------------------")
-            print("(4/5)".center(51))
+            print("(4/5)".center(70))
             print()
             input("Press enter to continue...")
             clear()
@@ -215,7 +235,7 @@ def pomodoro():
             print("worry if you miss a sound, this program will also show the")
             print("current pomodoro status on its window, along with the to-do list.")
             print("----------------------------------------------------")
-            print("(5/5)".center(51))
+            print("(5/5)".center(70))
             print()
             input("Press enter to continue...")
             clear()
@@ -306,7 +326,7 @@ def settings():
             print("----------AUDIO LIBRARIES----------".center(51))
             print("Pomodoro SFX: soundeffect-lab.info".center(51))
             print("-----------------------------------".center(51))
-            print("----------------------------------------------------")
+            print("----------------------------------------------------".center(51))
             input("Press enter to continue...")
             clear()
         elif settings_option == 0:
