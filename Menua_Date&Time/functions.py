@@ -1,6 +1,5 @@
 
-def addToList(tasks):
-    amount = int(input("Enter the amount of events you want to add:"))
+def addToList(tasks, amount):
     for i in range(amount):
         task = []
         print("-------- NEW TASK -------")
@@ -13,6 +12,15 @@ def addToList(tasks):
         tasks.append(task)
     return tasks
 
-def removeTask(tasks):
+def removeTask(tasks, amount):
     print(tasks)
-    rtask = input("Enter the name of the task you want to remove")
+    rtask = int(input("Enter the number of the task you want to remove"))
+    if rtask > amount:
+        print("1")
+
+
+
+
+
+def searchTheTask(rtask, tasks):
+
