@@ -94,8 +94,8 @@ def pomodoro():
     while pomodoro_option != 0:
         print("----------------------POMODORO----------------------")
         print("WARNING: Once you enable Pomodoro mode you won't be")
-        print("able to use the rest of the features here. You'll only")
-        print("see your to-do list along with the current phase.")
+        print("able to use the rest of the features here. The only")
+        print("way to stop it is to close the program.")
         print("Learn more in the HELP (9) section.")
         print()
         print("What do you want to do?")
