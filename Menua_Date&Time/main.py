@@ -3,13 +3,14 @@
 from functions import *
 
 #____________________________________________________________________________MENU
-amount = -1
+option = -1
 tasks = []
-while amount != 0:
-    if amount == 0:
+while option != 0:
+    if option == 0:
         break
     else:
-        tasks = addToList(tasks)
+        amount = int(input("Enter the amount of events you want to add:"))
+        tasks = addToList(tasks, amount)
         print(tasks)
-        amount = int(input("Do you want to continue? Press 0 for NO and other numbers for YES"))
+        option = int(input("Do you want to continue? Press 0 for NO and other numbers for YES"))
 #____________________________________________________________________________MENU
