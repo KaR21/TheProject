@@ -1,6 +1,5 @@
 import datetime
-import time
-import calendar
+
 from pygame import mixer
 
 
@@ -34,6 +33,7 @@ def alarm():
 
 def calendar():
     print("----------------------CALENDAR----------------------")
+    import calendar
     userInputDate = 'None'
     currentDateTime = datetime.datetime.now()
 
@@ -47,3 +47,5 @@ def calendar():
             month = int(input("Input the month : "))
 
             print(calendar.month(year, month))
+
+
