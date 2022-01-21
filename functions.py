@@ -92,22 +92,22 @@ def alarm():
     currentDate = timeNow.strftime('%d/%m/%y %H:%M')
     print(f'Current Date and Time is : {currentDate}')
 
-    userInputDate = 'None'
-    alarmDate = ''
+    user_input_date = 'None'
+    alarm_date = ''
 
-    while userInputDate not in ('Y', 'N'):
-        userInputDate = input('Want to set alarm on same date?(y/n): ').upper()
-        if userInputDate == 'Y':
-            userInput = input('Please Enter alarm time in %H:%M : ')
-            alarmDate = timeNow.strftime('%d/%m/%y') + ' ' + userInput
-            print(f'Alarm is set to : {alarmDate}')
+    while user_input_date not in ('Y', 'N'):
+        user_input_date = input('Want to set alarm on same date?(y/n): ').upper()
+        if user_input_date == 'Y':
+            user_input = input('Please Enter alarm time in %H:%M : ')
+            alarm_date = timeNow.strftime('%d/%m/%y') + ' ' + user_input
+            print(f'Alarm is set to : {alarm_date}')
         else:
-            userInput = input('Please Enter alarm time in %d/%m/%y %H:%M : ')
-            alarmDate = userInput
-            print(f'Alarm is set to : {alarmDate}')
+            user_input = input('Please Enter alarm time in %d/%m/%y %H:%M : ')
+            alarm_date = user_input
+            print(f'Alarm is set to : {alarm_date}')
 
     while True:
-        if datetime.datetime.now().strftime('%d/%m/%y %H:%M') == alarmDate:
+        if datetime.datetime.now().strftime('%d/%m/%y %H:%M') == alarm_date:
             mixer.music.load("./aud/work.mp3")
             mixer.music.play()
             break
@@ -275,13 +275,13 @@ def todo():
 
 def thecalendar():
     print("----------------------CALENDAR----------------------")
-    userInputDate = 'None'
-    currentDateTime = datetime.datetime.now()
+    user_input_date = 'None'
+    current_date_time = datetime.datetime.now()
 
-    while userInputDate not in ('Y', 'N'):
-        userInputDate = input('do you want to see the calendar of this month?(y/n): ').upper()
-        if userInputDate == 'Y':
-            print(calendar.month(currentDateTime.year, currentDateTime.month))
+    while user_input_date not in ('Y', 'N'):
+        user_input_date = input('do you want to see the calendar of this month?(y/n): ').upper()
+        if user_input_date == 'Y':
+            print(calendar.month(current_date_time.year, current_date_time.month))
         else:
             year = int(input("Input the year : "))
             month = int(input("Input the month : "))
@@ -395,3 +395,12 @@ def clear():   # clears the terminal
     # for bash
     else:
         _ = os.system('clear')
+
+
+def others():
+    tempinput = -1
+    print("----------------------OTHERS---------------------")
+    print("What do you want to do?")
+    print("1) Draw a number triangle")
+    print("0) MAIN MENU")
+    tempinput = int(input("Choose an option:"))

@@ -29,6 +29,7 @@ while menuOption != 0:
     print("3) Pomodoro")  # automatic timer to work/rest
     print("4) To-do list")  # view or edit to-do list
     print("5) Calendar")  # print current month or let the user choose
+    print("6) Other functions")   # some other exercises
     print("9) Settings")  # change a few settings like date format preference, name or theme
     print("0) EXIT")
     print("----------------------------------------------------")
@@ -44,6 +45,8 @@ while menuOption != 0:
         todo()
     elif menuOption == 5:
         thecalendar()
+    elif menuOption == 6:
+        others()
     elif menuOption == 9:
         settings()
         save()
