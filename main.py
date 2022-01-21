@@ -5,7 +5,7 @@ from functions import *
 if not(os.path.isfile("data.txt")):   # if data.txt does not exist
     create()   # creates save file with default data
     save()
-restore_theme()
+# restore_theme() used to restore color scheme when it was a thing
 
 #  ____________________________________________________________________________DATE AND TIME VARIABLES
 now = datetime.datetime.now()  # gets the current date

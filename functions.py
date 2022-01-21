@@ -1,7 +1,6 @@
 import os
 import linecache
 import time
-import calendar
 
 from colorama import Fore, Back, Style
 from pygame import mixer
@@ -198,7 +197,7 @@ def pomodoro():
             print("-------------------POMODORO HELP--------------------")
             print("Remember that, because this is a focusing mode, you")
             print("will not be able to access most features from here,")
-            print("only the to-do list and the timer of the pomodoro.")
+            print("you will only the timer of the pomodoro.")
             print("The timer will have different time options.")
             print("----------------------------------------------------")
             print("(2/5)".center(70))
@@ -233,7 +232,7 @@ def pomodoro():
             print("This other sound will play when you enter rest mode,")
             print("which means you can take a break for a few minutes. Don't")
             print("worry if you miss a sound, this program will also show the")
-            print("current pomodoro status on its window, along with the to-do list.")
+            print("current pomodoro status on its window.")
             print("----------------------------------------------------")
             print("(5/5)".center(70))
             print()
@@ -258,8 +257,8 @@ def settings():
         print("1) Change name")  # change the username
         print("2) Change date format")  # change preferred date format for the calendar
         print("3) Show/hide seconds in the main menu")  # show or hide seconds in the main menu's clock
-        print("4) Choose theme")  # change the colors of the interface
-        print("5) Clean terminal")  # clean the terminal when you come back to the main menu
+        print("4) Clean terminal")  # clean the terminal when you come back to the main menu
+        # print("5) Choose theme")  # change the colors of the interface
         print("9) Credits")  # credits
         print("0) MAIN MENU")  # go back to the main menu
         print("----------------------------------------------------")
@@ -288,6 +287,18 @@ def settings():
             else:
                 print("Invalid input.")
         elif settings_option == 4:
+            print("Do you want to clear the terminal after each operation?")
+            print("1) Yes")
+            print("2) No")
+            tempinput = int(input("Choose an option: "))
+            if tempinput == 1:
+                d.clean = True
+            elif tempinput == 2:
+                d.clean = False
+            else:
+                print("Invalid input.")
+                '''
+        elif settings_option == 5:
             print("Choose a theme:")
             print("1) Classic")
             print("2) Miami")
@@ -303,17 +314,7 @@ def settings():
             elif tempinput == 3:
                 print(Back.BLACK + Fore.GREEN)
                 d.theme = 3
-        elif settings_option == 5:
-            print("Do you want to clear the terminal after each operation?")
-            print("1) Yes")
-            print("2) No")
-            tempinput = int(input("Choose an option: "))
-            if tempinput == 1:
-                d.clean = True
-            elif tempinput == 2:
-                d.clean = False
-            else:
-                print("Invalid input.")
+                '''
         elif settings_option == 9:
             clear()
             print("----------------------CREDITS-----------------------")
@@ -335,12 +336,15 @@ def settings():
             print("invalid number")
 
 
+'''
+# THEME RESTORER (unnecessary)
 def restore_theme():
     print(Style.RESET_ALL)
     if d.theme == 2:
         print(Back.WHITE + Fore.BLACK)
     elif d.theme == 3:
         print(Back.BLACK + Fore.GREEN)
+'''
 
 
 def clear():   # clears the terminal
