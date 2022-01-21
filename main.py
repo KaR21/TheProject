@@ -43,7 +43,7 @@ while menuOption != 0:
     elif menuOption == 4:
         todo()
     elif menuOption == 5:
-        calendar()
+        thecalendar()
     elif menuOption == 9:
         settings()
         save()
