@@ -1,3 +1,4 @@
+
 import datetime
 
 from pygame import mixer
@@ -29,23 +30,3 @@ def alarm():
             mixer.music.load("./aud/work.mp3")
             mixer.music.play()
             break
-
-
-def calendar():
-    print("----------------------CALENDAR----------------------")
-    import calendar
-    userInputDate = 'None'
-    currentDateTime = datetime.datetime.now()
-
-    while userInputDate not in ('Y', 'N'):
-        userInputDate = input('do you want to see the calendar of this month?(y/n): ').upper()
-        if userInputDate == 'Y':
-
-            print(calendar.month(currentDateTime.year, currentDateTime.month))
-        else:
-            year = int(input("Input the year : "))
-            month = int(input("Input the month : "))
-
-            print(calendar.month(year, month))
-
-
