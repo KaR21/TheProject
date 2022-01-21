@@ -1,32 +1,54 @@
-# CREATE A MENU WITH DIFFERENT OPTIONS THAT WILL BE ABLE TO WORK WITH STRINGS
-import os
 import datetime
 from functions import *
 
-now = datetime.datetime.now()
-CurrentDate = "%d/%m/%Y"
-CurrentDateStr = "%a, %b %d"
-CurrentTime = "%H:%M"
-CurrentTimeSec = "%H:%M:%S"
-#____________________________________________________________________________MENU
-aukera = -1
-while aukera != 0:
-    print(f"Hello, {os.getlogin()}! It is now {now.strftime(CurrentTime)} of {now.strftime(CurrentDateStr)}.")
+#  ___________________________________________________________________________SAVE AND LOAD DATA
+if not(os.path.isfile("data.txt")):   # if data.txt does not exist
+    create()   # creates save file with default data
+    save()
+# restore_theme() used to restore color scheme when it was a thing
+
+#  ____________________________________________________________________________DATE AND TIME VARIABLES
+now = datetime.datetime.now()  # gets the current date
+CurrentDate = "%d/%m/%Y"  # formats the current date as 31/12/2000
+CurrentDateStr = "%a, %b %d"  # formats the current date as Sun, Dec 31
+CurrentTime = "%H:%M"  # formats the current time as 13:30
+CurrentTimeSec = "%H:%M:%S"  # formats the current time as 13:30:00
+
+#  ____________________________________________________________________________MENU
+menuOption = -1
+while menuOption != 0:
+    if d.clean:   # will clear the terminal if the user asked to do so
+        clear()
+    if d.seconds:
+        print(f"Hello, {d.name}! It is now {now.strftime(CurrentTimeSec)} of {now.strftime(CurrentDateStr)}.")
+    else:
+        print(f"Hello, {d.name}! It is now {now.strftime(CurrentTime)} of {now.strftime(CurrentDateStr)}.")
     print("------------------------MENU------------------------")
-    print("1) Stopwatch") #Count the time something takes
-    print("2) Alarm") #Alarm clock that will ring at a determined hour
-    print("3) Pomodoro") #automatic timer to work/rest
-    print("4) To-do list")  #view or edit to-do list
-    print("5) Calendar") #print current month or let the user choose
-    print("0) Exit.")
-    aukera = int(input())
-    #if aukera == 1:
+    print("1) Stopwatch")  # count the time something takes
+    print("2) Alarm")  # alarm clock that will ring at a determined hour
+    print("3) Pomodoro")  # automatic timer to work/rest
+    print("4) To-do list")  # view or edit to-do list
+    print("5) Calendar")  # print current month or let the user choose
+    print("9) Settings")  # change a few settings like date format preference, name or theme
+    print("0) EXIT")
+    print("----------------------------------------------------")
+    menuOption = int(input("Choose an option: "))
 
-    #elif aukera == 2:
-
-    #elif aukera == 3:
-
-    #elif aukera == 4:
-
-print("Goodbye!")
-#____________________________________________________________________________MENU
+    if menuOption == 1:
+        stopwatch()
+    elif menuOption == 2:
+        alarm()
+    elif menuOption == 3:
+        pomodoro()
+    elif menuOption == 4:
+        todo()
+    elif menuOption == 5:
+        calendar()
+    elif menuOption == 9:
+        settings()
+        save()
+    elif menuOption == 0:
+        print("Goodbye!")
+        input("Press enter to close...")
+    else:
+        print("invalid number")
