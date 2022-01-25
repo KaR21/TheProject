@@ -114,6 +114,36 @@ def alarm():
         input("Press enter to continue...")
 
 
+def odd_even():
+
+    numbers = 1
+    oddNumbers = 0
+    evenNumbers = 0
+    userInput = int(input('Enter how many numbers you want to check: '))
+    while numbers <= userInput:
+        numbers = numbers + 1
+        if numbers % 2 == 0:
+            evenNumbers = evenNumbers + 1
+        else:
+            oddNumbers = oddNumbers + 1
+
+    print('number of even numbers are: {0}'  .format(evenNumbers))
+    print('number of odd numbers are: {0} ' .format(oddNumbers))
+
+
+def print_a():
+
+    result_str = ""
+    for row in range(0, 7):
+        for column in range(0, 7):
+            if (((column == 1 or column == 5) and row != 0) or (
+                    (row == 0 or row == 3) and (column > 1 and column < 5))):
+                result_str = result_str + "*"
+            else:
+                result_str = result_str + " "
+        result_str = result_str + "\n"
+    print(result_str)
+
 def pomodoro():
     mixer.init()
     pomodoro_option = -1
