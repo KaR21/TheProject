@@ -399,8 +399,17 @@ def clear():   # clears the terminal
 
 def others():
     tempinput = -1
-    print("----------------------OTHERS---------------------")
-    print("What do you want to do?")
-    print("1) Draw a number triangle")
-    print("0) MAIN MENU")
-    tempinput = int(input("Choose an option:"))
+    while tempinput != 0:
+        print("----------------------OTHERS---------------------")
+        print("What do you want to do?")
+        print("1) Draw a number triangle")
+        print("0) MAIN MENU")
+        tempinput = int(input("Choose an option:"))
+        if tempinput == 1:
+            size = int(input("How big should it be? "))
+            for i in range(1, size + 1):
+                draw = i
+                for x in range(1, i + 1):
+                    print(draw, end="")
+                print()
+            input("Press enter to continue...")
