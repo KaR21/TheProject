@@ -1,4 +1,3 @@
-
 def addToList(tasks, amount):
     for i in range(amount):
         task = []
@@ -15,12 +14,10 @@ def addToList(tasks, amount):
 def removeTask(tasks, amount):
     print(tasks)
     rtask = int(input("Enter the number of the task you want to remove"))
-    if rtask > amount:
-        print("1")
+    if rtask < amount + 1:
+        tasks.remove(rtask-1)
+    else:
+        print("There is not that task on the list")
 
 
-
-
-
-def searchTheTask(rtask, tasks):
 
