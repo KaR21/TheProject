@@ -1,5 +1,0 @@
-elorza.karmele
-1
-False
-2
-True
