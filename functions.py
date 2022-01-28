@@ -116,13 +116,16 @@ def alarm():
 
 def odd_even():
 
-    numbers = 1
+    list = []
     oddNumbers = 0
     evenNumbers = 0
-    userInput = int(input('Enter how many numbers you want to check: '))
-    while numbers <= userInput:
-        numbers = numbers + 1
-        if numbers % 2 == 0:
+    userInput = int(input('enter the size of the list:'))
+    print('enter the numbers of the list:')
+    for i in range(0, userInput):
+        listnumbers = int(input())
+        list.append(listnumbers)
+    for num in list:
+        if num % 2 == 0:
             evenNumbers = evenNumbers + 1
         else:
             oddNumbers = oddNumbers + 1
