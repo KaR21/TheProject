@@ -132,6 +132,7 @@ def odd_even():
 
     print('number of even numbers are: {0}'  .format(evenNumbers))
     print('number of odd numbers are: {0} ' .format(oddNumbers))
+    input("Press enter to continue...")
 
 
 def print_a():
@@ -146,6 +147,7 @@ def print_a():
                 result_str = result_str + " "
         result_str = result_str + "\n"
     print(result_str)
+
 
 def pomodoro():
     mixer.init()
