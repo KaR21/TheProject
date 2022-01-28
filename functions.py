@@ -111,7 +111,7 @@ def alarm():
             mixer.music.load("./aud/work.mp3")
             mixer.music.play()
             break
-        input("Press enter to continue...")
+    input("Press enter to continue...")
 
 
 def pomodoro():
@@ -277,17 +277,38 @@ def thecalendar():
     print("----------------------CALENDAR----------------------")
     user_input_date = 'None'
     current_date_time = datetime.datetime.now()
+    datestr1 = "%d/%m/%Y"
+    datestr2 = "%m/%d/%Y"
+    datestr3 = "%Y/%m/%d"
+    if d.date == 1:
+        print(f"{current_date_time.strftime(datestr1)}".center(51))
+    elif d.date == 2:
+        print(f"{current_date_time.strftime(datestr2)}".center(51))
+    elif d.date == 3:
+        print(f"{current_date_time.strftime(datestr3)}".center(51))
 
     while user_input_date not in ('Y', 'N'):
-        user_input_date = input('do you want to see the calendar of this month?(y/n): ').upper()
+        user_input_date = input('Do you want to see the calendar of this month?(Y/N): ').upper()
         if user_input_date == 'Y':
+            print()
             print(calendar.month(current_date_time.year, current_date_time.month))
         else:
-            year = int(input("Input the year : "))
-            month = int(input("Input the month : "))
-
+            year = int(input("Input the year: "))
+            month = int(input("Input the month: "))
+            print()
             print(calendar.month(year, month))
+            print()
         input("Press enter to continue...")
+
+
+def drawnumbertriangle():
+    size = int(input("How big should it be? "))
+    for i in range(1, size + 1):
+        draw = i
+        for x in range(1, i + 1):
+            print(draw, end="")
+        print()
+    input("Press enter to continue...")
 
 
 def settings():
@@ -406,10 +427,4 @@ def others():
         print("0) MAIN MENU")
         tempinput = int(input("Choose an option:"))
         if tempinput == 1:
-            size = int(input("How big should it be? "))
-            for i in range(1, size + 1):
-                draw = i
-                for x in range(1, i + 1):
-                    print(draw, end="")
-                print()
-            input("Press enter to continue...")
+            drawnumbertriangle()
