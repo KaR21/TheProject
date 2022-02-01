@@ -269,9 +269,70 @@ def pomodoro():
             print("Invalid number")
 
 
-def todo():
-    print("---------------------TO DO LIST---------------------")
+def addToList(tasks, amount):
+    for i in range(amount):
+        task = []
+        print("-------- NEW TASK -------")
+        tname = input("Enter the name of the task: ")
+        task.append("To do -> " + tname)
+        deadline = input("Enter the deadline date of the task: ")
+        task.append("DeadLine -> " + deadline)
+        description = input("Enter the description of the task: ")
+        task.append("Description -> " + description)
+        tasks.append(task)
+    return tasks
 
+
+def removeTask(tasks, amount):
+    print(tasks)
+    rtask = int(input("Enter the number of the task you want to remove: "))
+    if rtask < amount + 1:
+        tasks.pop(rtask - 1)
+    else:
+        print("There is not that task on the list.")
+
+
+def todo():
+    option = -1
+    remove = -1
+    tasks = []
+    print("---------------------TO DO LIST---------------------")
+    print("Do you want to add tasks?")
+    print("1) Yes")
+    print("0) No")
+    addTasks = int(input("Enter the answer: "))
+    if addTasks == 1:
+        while option != 0:
+            amount = int(input("How many tasks you want to add? Enter the answer: "))
+            tasks = addToList(tasks, amount)
+            print(tasks)
+            print("Do you want to add more tasks?")
+            print("1) Yes")
+            print("0) No")
+            option = int(input("Enter the answer: "))
+
+        print("Do you want to see all tasks?")
+        print("1) Yes")
+        print("0) No")
+        seeTasks = int(input("Enter the answer: "))
+        if seeTasks == 1:
+            print(tasks)
+
+        while remove != 0:
+            print("Do you want to remove some task?")
+            print("1) Yes")
+            print("0) No")
+            remove = int(input("Enter the answer: "))
+            if remove == 1:
+                removeTask(tasks, amount)
+            if not tasks:
+                print("There are not tasks to do on the list. Redirecting to the menu...")
+                break;
+            else:
+                print(tasks)
+
+    else:
+        print("Redirecting to the menu...")
 
 def thecalendar():
     print("----------------------CALENDAR----------------------")
@@ -417,14 +478,37 @@ def clear():   # clears the terminal
     else:
         _ = os.system('clear')
 
+        
+def IsPalindrome():
+    word = input("Enter a word:")
+    start = 0
+    end = len(word)-1
+    palindrome = True
 
+    while start < end and palindrome:
+        if word[start] != word[end]:
+            palindrome = False
+        else:
+            start = start+1
+            end = end-1
+
+    if palindrome:
+        print("The word you entered is palindrome.")
+    else:
+        print("The word you entered is not palindrome.")
+
+        
 def others():
     tempinput = -1
     while tempinput != 0:
         print("----------------------OTHERS---------------------")
         print("What do you want to do?")
         print("1) Draw a number triangle")
+        print("2) See if you word is palindrome")
         print("0) MAIN MENU")
         tempinput = int(input("Choose an option:"))
         if tempinput == 1:
             drawnumbertriangle()
+        elif tempinput == 2:
+            IsPalindrome()
+        input("Press enter to continue...")
