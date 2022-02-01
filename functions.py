@@ -92,61 +92,26 @@ def alarm():
     currentDate = timeNow.strftime('%d/%m/%y %H:%M')
     print(f'Current Date and Time is : {currentDate}')
 
-    userInputDate = 'None'
-    alarmDate = ''
+    user_input_date = 'None'
+    alarm_date = ''
 
-    while userInputDate not in ('Y', 'N'):
-        userInputDate = input('Want to set alarm on same date?(y/n): ').upper()
-        if userInputDate == 'Y':
-            userInput = input('Please Enter alarm time in %H:%M : ')
-            alarmDate = timeNow.strftime('%d/%m/%y') + ' ' + userInput
-            print(f'Alarm is set to : {alarmDate}')
+    while user_input_date not in ('Y', 'N'):
+        user_input_date = input('Want to set alarm on same date?(y/n): ').upper()
+        if user_input_date == 'Y':
+            user_input = input('Please Enter alarm time in %H:%M : ')
+            alarm_date = timeNow.strftime('%d/%m/%y') + ' ' + user_input
+            print(f'Alarm is set to : {alarm_date}')
         else:
-            userInput = input('Please Enter alarm time in %d/%m/%y %H:%M : ')
-            alarmDate = userInput
-            print(f'Alarm is set to : {alarmDate}')
+            user_input = input('Please Enter alarm time in %d/%m/%y %H:%M : ')
+            alarm_date = user_input
+            print(f'Alarm is set to : {alarm_date}')
 
     while True:
-        if datetime.datetime.now().strftime('%d/%m/%y %H:%M') == alarmDate:
+        if datetime.datetime.now().strftime('%d/%m/%y %H:%M') == alarm_date:
             mixer.music.load("./aud/work.mp3")
             mixer.music.play()
             break
-        input("Press enter to continue...")
-
-
-def odd_even():
-
-    list = []
-    oddNumbers = 0
-    evenNumbers = 0
-    userInput = int(input('enter the size of the list:'))
-    print('enter the numbers of the list:')
-    for i in range(0, userInput):
-        listnumbers = int(input())
-        list.append(listnumbers)
-    for num in list:
-        if num % 2 == 0:
-            evenNumbers = evenNumbers + 1
-        else:
-            oddNumbers = oddNumbers + 1
-
-    print('number of even numbers are: {0}'  .format(evenNumbers))
-    print('number of odd numbers are: {0} ' .format(oddNumbers))
     input("Press enter to continue...")
-
-
-def print_a():
-
-    result_str = ""
-    for row in range(0, 7):
-        for column in range(0, 7):
-            if (((column == 1 or column == 5) and row != 0) or (
-                    (row == 0 or row == 3) and (column > 1 and column < 5))):
-                result_str = result_str + "*"
-            else:
-                result_str = result_str + " "
-        result_str = result_str + "\n"
-    print(result_str)
 
 
 def pomodoro():
@@ -304,25 +269,141 @@ def pomodoro():
             print("Invalid number")
 
 
+def addToList(tasks, amount):
+    for i in range(amount):
+        task = []
+        print("-------- NEW TASK -------")
+        tname = input("Enter the name of the task: ")
+        task.append("To do -> " + tname)
+        deadline = input("Enter the deadline date of the task: ")
+        task.append("DeadLine -> " + deadline)
+        description = input("Enter the description of the task: ")
+        task.append("Description -> " + description)
+        tasks.append(task)
+    return tasks
+
+
+def removeTask(tasks, amount):
+    print(tasks)
+    rtask = int(input("Enter the number of the task you want to remove: "))
+    if rtask < amount + 1:
+        tasks.pop(rtask - 1)
+    else:
+        print("There is not that task on the list.")
+
+
 def todo():
+    option = -1
+    remove = -1
+    tasks = []
     print("---------------------TO DO LIST---------------------")
+    print("Do you want to add tasks?")
+    print("1) Yes")
+    print("0) No")
+    addTasks = int(input("Enter the answer: "))
+    if addTasks == 1:
+        while option != 0:
+            amount = int(input("How many tasks you want to add? Enter the answer: "))
+            tasks = addToList(tasks, amount)
+            print(tasks)
+            print("Do you want to add more tasks?")
+            print("1) Yes")
+            print("0) No")
+            option = int(input("Enter the answer: "))
+
+        print("Do you want to see all tasks?")
+        print("1) Yes")
+        print("0) No")
+        seeTasks = int(input("Enter the answer: "))
+        if seeTasks == 1:
+            print(tasks)
+
+        while remove != 0:
+            print("Do you want to remove some task?")
+            print("1) Yes")
+            print("0) No")
+            remove = int(input("Enter the answer: "))
+            if remove == 1:
+                removeTask(tasks, amount)
+            if not tasks:
+                print("There are not tasks to do on the list. Redirecting to the menu...")
+                break;
+            else:
+                print(tasks)
+
+    else:
+        print("Redirecting to the menu...")
+
+def odd_even():
+
+    list = []
+    oddNumbers = 0
+    evenNumbers = 0
+    userInput = int(input('enter the size of the list:'))
+    print('enter the numbers of the list:')
+    for i in range(0, userInput):
+        listnumbers = int(input())
+        list.append(listnumbers)
+    for num in list:
+        if num % 2 == 0:
+            evenNumbers = evenNumbers + 1
+        else:
+            oddNumbers = oddNumbers + 1
+
+    print('number of even numbers are: {0}'  .format(evenNumbers))
+    print('number of odd numbers are: {0} ' .format(oddNumbers))
+    input("Press enter to continue...")
 
 
+def print_a():
+
+    result_str = ""
+    for row in range(0, 7):
+        for column in range(0, 7):
+            if (((column == 1 or column == 5) and row != 0) or (
+                    (row == 0 or row == 3) and (column > 1 and column < 5))):
+                result_str = result_str + "*"
+            else:
+                result_str = result_str + " "
+        result_str = result_str + "\n"
+    print(result_str)
+        
 def thecalendar():
     print("----------------------CALENDAR----------------------")
-    userInputDate = 'None'
-    currentDateTime = datetime.datetime.now()
+    user_input_date = 'None'
+    current_date_time = datetime.datetime.now()
+    datestr1 = "%d/%m/%Y"
+    datestr2 = "%m/%d/%Y"
+    datestr3 = "%Y/%m/%d"
+    if d.date == 1:
+        print(f"{current_date_time.strftime(datestr1)}".center(51))
+    elif d.date == 2:
+        print(f"{current_date_time.strftime(datestr2)}".center(51))
+    elif d.date == 3:
+        print(f"{current_date_time.strftime(datestr3)}".center(51))
 
-    while userInputDate not in ('Y', 'N'):
-        userInputDate = input('do you want to see the calendar of this month?(y/n): ').upper()
-        if userInputDate == 'Y':
-            print(calendar.month(currentDateTime.year, currentDateTime.month))
+    while user_input_date not in ('Y', 'N'):
+        user_input_date = input('Do you want to see the calendar of this month?(Y/N): ').upper()
+        if user_input_date == 'Y':
+            print()
+            print(calendar.month(current_date_time.year, current_date_time.month))
         else:
-            year = int(input("Input the year : "))
-            month = int(input("Input the month : "))
-
+            year = int(input("Input the year: "))
+            month = int(input("Input the month: "))
+            print()
             print(calendar.month(year, month))
+            print()
         input("Press enter to continue...")
+
+
+def drawnumbertriangle():
+    size = int(input("How big should it be? "))
+    for i in range(1, size + 1):
+        draw = i
+        for x in range(1, i + 1):
+            print(draw, end="")
+        print()
+    input("Press enter to continue...")
 
 
 def settings():
@@ -430,3 +511,44 @@ def clear():   # clears the terminal
     # for bash
     else:
         _ = os.system('clear')
+
+        
+def IsPalindrome():
+    word = input("Enter a word:")
+    start = 0
+    end = len(word)-1
+    palindrome = True
+
+    while start < end and palindrome:
+        if word[start] != word[end]:
+            palindrome = False
+        else:
+            start = start+1
+            end = end-1
+
+    if palindrome:
+        print("The word you entered is palindrome.")
+    else:
+        print("The word you entered is not palindrome.")
+
+        
+def others():
+    tempinput = -1
+    while tempinput != 0:
+        print("----------------------OTHERS---------------------")
+        print("What do you want to do?")
+        print("1) Draw a number triangle")
+        print("2) See if you word is palindrome")
+        print("3) Count how many numbers are odd and even in a serie of numbers")
+        print("4) Print the letter A")
+        print("0) MAIN MENU")
+        tempinput = int(input("Choose an option:"))
+        if tempinput == 1:
+            drawnumbertriangle()
+        elif tempinput == 2:
+            IsPalindrome()
+        elif tempinput == 3:
+            odd_even()
+        elif tempinput == 4:
+            print_a()
+        input("Press enter to continue...")
