@@ -334,6 +334,40 @@ def todo():
     else:
         print("Redirecting to the menu...")
 
+def odd_even():
+
+    list = []
+    oddNumbers = 0
+    evenNumbers = 0
+    userInput = int(input('enter the size of the list:'))
+    print('enter the numbers of the list:')
+    for i in range(0, userInput):
+        listnumbers = int(input())
+        list.append(listnumbers)
+    for num in list:
+        if num % 2 == 0:
+            evenNumbers = evenNumbers + 1
+        else:
+            oddNumbers = oddNumbers + 1
+
+    print('number of even numbers are: {0}'  .format(evenNumbers))
+    print('number of odd numbers are: {0} ' .format(oddNumbers))
+    input("Press enter to continue...")
+
+
+def print_a():
+
+    result_str = ""
+    for row in range(0, 7):
+        for column in range(0, 7):
+            if (((column == 1 or column == 5) and row != 0) or (
+                    (row == 0 or row == 3) and (column > 1 and column < 5))):
+                result_str = result_str + "*"
+            else:
+                result_str = result_str + " "
+        result_str = result_str + "\n"
+    print(result_str)
+        
 def thecalendar():
     print("----------------------CALENDAR----------------------")
     user_input_date = 'None'
@@ -505,10 +539,16 @@ def others():
         print("What do you want to do?")
         print("1) Draw a number triangle")
         print("2) See if you word is palindrome")
+        print("3) Count how many numbers are odd and even in a serie of numbers")
+        print("4) Print the letter A")
         print("0) MAIN MENU")
         tempinput = int(input("Choose an option:"))
         if tempinput == 1:
             drawnumbertriangle()
         elif tempinput == 2:
             IsPalindrome()
+        elif tempinput == 3:
+            odd_even()
+        elif tempinput == 4:
+            print_a()
         input("Press enter to continue...")
