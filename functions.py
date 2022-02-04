@@ -531,6 +531,12 @@ def IsPalindrome():
     else:
         print("The word you entered is not palindrome.")
 
+
+def reverse():
+    i = input("Enter some text: ")
+    i = i[::-1]
+    print(i)
+
         
 def others():
     tempinput = -1
@@ -541,6 +547,7 @@ def others():
         print("2) See if you word is palindrome")
         print("3) Count how many numbers are odd and even in a serie of numbers")
         print("4) Print the letter A")
+        print("5) Reverse a string")
         print("0) MAIN MENU")
         tempinput = int(input("Choose an option:"))
         if tempinput == 1:
@@ -551,4 +558,6 @@ def others():
             odd_even()
         elif tempinput == 4:
             print_a()
+        elif tempinput == 5:
+            reverse()
         input("Press enter to continue...")
