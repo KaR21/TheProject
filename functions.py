@@ -88,9 +88,9 @@ def stopwatch():
 def alarm():
     print("-----------------------ALARM------------------------")
     mixer.init()
-    timeNow = datetime.datetime.now()
-    currentDate = timeNow.strftime('%d/%m/%y %H:%M')
-    print(f'Current Date and Time is : {currentDate}')
+    time_now = datetime.datetime.now()
+    current_date = time_now.strftime('%d/%m/%y %H:%M')
+    print(f'Current Date and Time is : {current_date}')
 
     user_input_date = 'None'
     alarm_date = ''
@@ -99,7 +99,7 @@ def alarm():
         user_input_date = input('Want to set alarm on same date?(y/n): ').upper()
         if user_input_date == 'Y':
             user_input = input('Please Enter alarm time in %H:%M : ')
-            alarm_date = timeNow.strftime('%d/%m/%y') + ' ' + user_input
+            alarm_date = time_now.strftime('%d/%m/%y') + ' ' + user_input
             print(f'Alarm is set to : {alarm_date}')
         else:
             user_input = input('Please Enter alarm time in %d/%m/%y %H:%M : ')
@@ -293,6 +293,7 @@ def removeTask(tasks, amount):
 
 
 def todo():
+    amount = 0
     option = -1
     remove = -1
     tasks = []
@@ -327,15 +328,15 @@ def todo():
                 removeTask(tasks, amount)
             if not tasks:
                 print("There are not tasks to do on the list. Redirecting to the menu...")
-                break;
+                break
             else:
                 print(tasks)
 
     else:
         print("Redirecting to the menu...")
 
-def odd_even():
 
+def odd_even():
     list = []
     oddNumbers = 0
     evenNumbers = 0
@@ -367,7 +368,8 @@ def print_a():
                 result_str = result_str + " "
         result_str = result_str + "\n"
     print(result_str)
-        
+
+
 def thecalendar():
     print("----------------------CALENDAR----------------------")
     user_input_date = 'None'
@@ -531,6 +533,12 @@ def IsPalindrome():
     else:
         print("The word you entered is not palindrome.")
 
+
+def reverse():
+    i = input("Enter some text: ")
+    i = i[::-1]
+    print(i)
+
         
 def others():
     tempinput = -1
@@ -541,6 +549,7 @@ def others():
         print("2) See if you word is palindrome")
         print("3) Count how many numbers are odd and even in a serie of numbers")
         print("4) Print the letter A")
+        print("5) Reverse a string")
         print("0) MAIN MENU")
         tempinput = int(input("Choose an option:"))
         if tempinput == 1:
@@ -551,4 +560,6 @@ def others():
             odd_even()
         elif tempinput == 4:
             print_a()
+        elif tempinput == 5:
+            reverse()
         input("Press enter to continue...")
