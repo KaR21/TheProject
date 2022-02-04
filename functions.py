@@ -3,6 +3,7 @@ import linecache
 import time
 import datetime
 import calendar
+from functionsKar import *
 
 # from colorama import Fore, Back, Style
 from pygame import mixer
@@ -550,6 +551,7 @@ def others():
         print("3) Count how many numbers are odd and even in a serie of numbers")
         print("4) Print the letter A")
         print("5) Reverse a string")
+        print("6) Print a tree")
         print("0) MAIN MENU")
         tempinput = int(input("Choose an option:"))
         if tempinput == 1:
@@ -562,4 +564,6 @@ def others():
             print_a()
         elif tempinput == 5:
             reverse()
+        elif tempinput == 6:
+            printATree()
         input("Press enter to continue...")
