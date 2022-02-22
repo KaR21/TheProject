@@ -18,6 +18,22 @@ def csvManagement():
         reader = csv.DictReader(f)
         headers = reader.fieldnames
         print(headers)
+        i = 0
         for row in reader:
             print(row['first_name'], row['last_name'])
 
+    print(row)
+    answer = 1
+    while(answer == 1):
+        print("Do you want to search someone?")
+        print("0) NO")
+        print("1) YES")
+        answer = int(input())
+        if(answer == 1):
+            print("Who do yo want to search?")
+            name = input("Enter the name: ")
+            if name in row:
+                print("si")
+
+        elif(answer == 0):
+            answer = 0
