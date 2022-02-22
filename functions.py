@@ -4,6 +4,7 @@ import time
 import datetime
 import calendar
 from functionsKar import *
+from functionsCSV import *
 
 # from colorama import Fore, Back, Style
 from pygame import mixer
@@ -36,7 +37,7 @@ def create():
         d.seconds = False  # defaults clock to not to show seconds
         d.theme = 1  # defaults theme to classic
         d.clean = True  # defaults to clearing the terminal after switching menus
-        d.stopwatch = None   # lets stopwatch save a null value
+        d.stopwatch = None  # lets stopwatch save a null value
 
 
 def save():
@@ -133,10 +134,10 @@ def pomodoro():
         pomodoro_option = int(input("Choose an option: "))
         print(pomodoro_option)
         if pomodoro_option == 1:
-            pomodoro_time = -1   # the index of the options
-            pomodoro_work = 0   # amount of work minutes
+            pomodoro_time = -1  # the index of the options
+            pomodoro_work = 0  # amount of work minutes
             pomodoro_rest = 0  # amount of rest minutes
-            pomodoro_current = "stop"   # current pomodoro status (start/stop)
+            pomodoro_current = "stop"  # current pomodoro status (start/stop)
             clear()
             while pomodoro_time != 0:
                 print("----------------------POMODORO----------------------")
@@ -167,7 +168,7 @@ def pomodoro():
                     print("invalid number")
                 if pomodoro_current == "start":
                     clear()
-                    pomodoro_time = 0   # discards menu choice to avoid a bug
+                    pomodoro_time = 0  # discards menu choice to avoid a bug
                     pomodoro_work_restore = pomodoro_work
                     pomodoro_rest_restore = pomodoro_rest
                     while pomodoro_current == "start":
@@ -352,13 +353,12 @@ def odd_even():
         else:
             oddNumbers = oddNumbers + 1
 
-    print('number of even numbers are: {0}'  .format(evenNumbers))
-    print('number of odd numbers are: {0} ' .format(oddNumbers))
+    print('number of even numbers are: {0}'.format(evenNumbers))
+    print('number of odd numbers are: {0} '.format(oddNumbers))
     input("Press enter to continue...")
 
 
 def print_a():
-
     result_str = ""
     for row in range(0, 7):
         for column in range(0, 7):
@@ -506,7 +506,7 @@ def restore_theme():
 '''
 
 
-def clear():   # clears the terminal
+def clear():  # clears the terminal
     # for cmd
     if os.name == 'nt':
         _ = os.system('cls')
@@ -515,19 +515,19 @@ def clear():   # clears the terminal
     else:
         _ = os.system('clear')
 
-        
+
 def IsPalindrome():
     word = input("Enter a word:")
     start = 0
-    end = len(word)-1
+    end = len(word) - 1
     palindrome = True
 
     while start < end and palindrome:
         if word[start] != word[end]:
             palindrome = False
         else:
-            start = start+1
-            end = end-1
+            start = start + 1
+            end = end - 1
 
     if palindrome:
         print("The word you entered is palindrome.")
@@ -540,7 +540,7 @@ def reverse():
     i = i[::-1]
     print(i)
 
-        
+
 def others():
     tempinput = -1
     while tempinput != 0:
@@ -552,6 +552,7 @@ def others():
         print("4) Print the letter A")
         print("5) Reverse a string")
         print("6) Print a tree")
+        print("7) CSV files management")
         print("0) MAIN MENU")
         tempinput = int(input("Choose an option:"))
         if tempinput == 1:
@@ -566,4 +567,6 @@ def others():
             reverse()
         elif tempinput == 6:
             printATree()
+        elif tempinput == 7:
+            csvManagement()
         input("Press enter to continue...")
