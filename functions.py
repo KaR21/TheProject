@@ -88,7 +88,7 @@ def stopwatch():
 
 
 def alarm():
-    print("-----------------------ALARM------------------------")
+    print("------------------------ALARM-------------------------")
     mixer.init()
     time_now = datetime.datetime.now()
     current_date = time_now.strftime('%d/%m/%y %H:%M')
