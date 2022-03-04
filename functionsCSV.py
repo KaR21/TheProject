@@ -32,8 +32,8 @@ def csvManagement():
         if(answer == 1):
             print("Who do yo want to search?")
             name = input("Enter the name: ")
-            if name in row:
-                print("si")
+            if name in row['first_name']:
+                print("Name:" + row['first_name'] + " " + row['last_name'])
 
         elif(answer == 0):
             answer = 0
