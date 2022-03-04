@@ -60,7 +60,7 @@ def search():
                 if(answer == 1):
                     print("Who do yo want to search?")
                     name = input("Enter the name: ")
-                    if name in reader:
+                    if name in row['first_name']:
                       print(row['first_name'], row['last_name'])
 
                 elif(answer == 0):
